@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+    {% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+       {% for item in products %}
+           <div class="card mb-3">
+               <div class="card-header">
+                   {{ item.name }} RAL {{ item.ral }}
+               </div>
+               <div class="card-body">
+                   <h5 class="card-title">Партия: {{ item.batch }}</h5>
+                   <p class="card-text">Потребитель {{ item.consumer }}</p>
+                   <a href="#" class="btn btn-primary">Испытания</a>
+               </div>
+               <div class="card-footer text-muted">
+                   {{ item.created_at|date:'d.m.Y' }}
+               </div>
+           </div>
+       {% endfor %}
+{% endblock %}
